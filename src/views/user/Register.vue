@@ -8,18 +8,19 @@
           type="text"
           placeholder="邮箱"
           v-decorator="['email', {rules: [{ required: true, type: 'email', message: '请输入邮箱地址' }], validateTrigger: ['change', 'blur']}]"
-        ></a-input>
+        />
       </a-form-item>
 
       <a-popover
         placement="rightTop"
         :trigger="['focus']"
-        :getPopupContainer="(trigger) => trigger.parentElement"
-        v-model="state.passwordLevelChecked">
+        :get-popup-container="(trigger) => trigger.parentElement"
+        v-model="state.passwordLevelChecked"
+      >
         <template slot="content">
-          <div :style="{ width: '240px' }" >
+          <div :style="{ width: '240px' }">
             <div :class="['user-register', passwordLevelClass]">强度：<span>{{ passwordLevelName }}</span></div>
-            <a-progress :percent="state.percent" :showInfo="false" :strokeColor=" passwordLevelColor " />
+            <a-progress :percent="state.percent" :show-info="false" :stroke-color=" passwordLevelColor " />
             <div style="margin-top: 10px;">
               <span>请至少输入 6 个字符。请不要使用容易被猜到的密码。</span>
             </div>
@@ -31,7 +32,7 @@
             @click="handlePasswordInputClick"
             placeholder="至少6位密码，区分大小写"
             v-decorator="['password', {rules: [{ required: true, message: '至少6位密码，区分大小写'}, { validator: this.handlePasswordLevel }], validateTrigger: ['change', 'blur']}]"
-          ></a-input-password>
+          />
         </a-form-item>
       </a-popover>
 
@@ -40,12 +41,12 @@
           size="large"
           placeholder="确认密码"
           v-decorator="['password2', {rules: [{ required: true, message: '至少6位密码，区分大小写' }, { validator: this.handlePasswordCheck }], validateTrigger: ['change', 'blur']}]"
-        ></a-input-password>
+        />
       </a-form-item>
 
       <a-form-item>
         <a-input size="large" placeholder="11 位手机号" v-decorator="['mobile', {rules: [{ required: true, message: '请输入正确的手机号', pattern: /^1[3456789]\d{9}$/ }, { validator: this.handlePhoneCheck } ], validateTrigger: ['change', 'blur'] }]">
-          <a-select slot="addonBefore" size="large" defaultValue="+86">
+          <a-select slot="addonBefore" size="large" default-value="+86">
             <a-select-option value="+86">+86</a-select-option>
             <a-select-option value="+87">+87</a-select-option>
           </a-select>
@@ -63,7 +64,7 @@
         <a-col class="gutter-row" :span="16">
           <a-form-item>
             <a-input size="large" type="text" placeholder="验证码" v-decorator="['captcha', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]">
-              <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+              <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }" />
             </a-input>
           </a-form-item>
         </a-col>
@@ -73,7 +74,8 @@
             size="large"
             :disabled="state.smsSendBtn"
             @click.stop.prevent="getCaptcha"
-            v-text="!state.smsSendBtn && '获取验证码'||(state.time+' s')"></a-button>
+            v-text="!state.smsSendBtn && '获取验证码'||(state.time+' s')"
+          />
         </a-col>
       </a-row>
 
@@ -81,40 +83,41 @@
         <a-button
           size="large"
           type="primary"
-          htmlType="submit"
+          html-type="submit"
           class="register-button"
           :loading="registerBtn"
           @click.stop.prevent="handleSubmit"
-          :disabled="registerBtn">注册
+          :disabled="registerBtn"
+        >
+          注册
         </a-button>
         <router-link class="login" :to="{ name: 'login' }">使用已有账户登录</router-link>
       </a-form-item>
-
     </a-form>
   </div>
 </template>
 
 <script>
-import { getSmsCaptcha } from '@/api/login'
+import { getSmsCaptcha } from '@/api/user'
 import { deviceMixin } from '@/store/device-mixin'
 
 const levelNames = {
   0: '低',
   1: '低',
   2: '中',
-  3: '强'
+  3: '强',
 }
 const levelClass = {
   0: 'error',
   1: 'error',
   2: 'warning',
-  3: 'success'
+  3: 'success',
 }
 const levelColor = {
   0: '#ff0000',
   1: '#ff0000',
   2: '#ff7e05',
-  3: '#52c41a'
+  3: '#52c41a',
 }
 export default {
   name: 'Register',
@@ -131,9 +134,9 @@ export default {
         passwordLevel: 0,
         passwordLevelChecked: false,
         percent: 10,
-        progressColor: '#FF0000'
+        progressColor: '#FF0000',
       },
-      registerBtn: false
+      registerBtn: false,
     }
   },
   computed: {
@@ -145,7 +148,7 @@ export default {
     },
     passwordLevelColor () {
       return levelColor[this.state.passwordLevel]
-    }
+    },
   },
   methods: {
     handlePasswordLevel (rule, value, callback) {
@@ -237,10 +240,10 @@ export default {
 
             getSmsCaptcha({ mobile: values.mobile }).then(res => {
               setTimeout(hide, 2500)
-              $notification['success']({
+              $notification.success({
                 message: '提示',
                 description: '验证码获取成功，您的验证码为：' + res.result.captcha,
-                duration: 8
+                duration: 8,
               })
             }).catch(err => {
               setTimeout(hide, 1)
@@ -250,23 +253,23 @@ export default {
               this.requestFailed(err)
             })
           }
-        }
+        },
       )
     },
     requestFailed (err) {
-      this.$notification['error']({
+      this.$notification.error({
         message: '错误',
         description: ((err.response || {}).data || {}).message || '请求出现错误，请稍后再试',
-        duration: 4
+        duration: 4,
       })
       this.registerBtn = false
-    }
+    },
   },
   watch: {
     'state.passwordLevel' (val) {
       console.log(val)
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="less">

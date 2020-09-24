@@ -8,12 +8,12 @@
       @submit="handleSubmit"
     >
       <a-tabs
-        :activeKey="customActiveKey"
-        :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }"
+        :active-key="customActiveKey"
+        :tab-bar-style="{ textAlign: 'center', borderBottom: 'unset' }"
         @change="handleTabClick"
       >
         <a-tab-pane key="tab1" tab="账号密码登录">
-          <a-alert v-if="isLoginError" type="error" showIcon style="margin-bottom: 24px;" message="账户或密码错误（admin/ant.design )" />
+          <a-alert v-if="isLoginError" type="error" show-icon style="margin-bottom: 24px;" message="账户或密码错误（admin/ant.design )" />
           <a-form-item>
             <a-input
               size="large"
@@ -24,7 +24,7 @@
                 {rules: [{ required: true, message: '请输入帐户名或邮箱地址' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
               ]"
             >
-              <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+              <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }" />
             </a-input>
           </a-form-item>
 
@@ -37,14 +37,14 @@
                 {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
               ]"
             >
-              <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+              <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }" />
             </a-input-password>
           </a-form-item>
         </a-tab-pane>
         <a-tab-pane key="tab2" tab="手机号登录">
           <a-form-item>
             <a-input size="large" type="text" placeholder="手机号" v-decorator="['mobile', {rules: [{ required: true, pattern: /^1[34578]\d{9}$/, message: '请输入正确的手机号' }], validateTrigger: 'change'}]">
-              <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+              <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }" />
             </a-input>
           </a-form-item>
 
@@ -52,7 +52,7 @@
             <a-col class="gutter-row" :span="16">
               <a-form-item>
                 <a-input size="large" type="text" placeholder="验证码" v-decorator="['captcha', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]">
-                  <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+                  <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }" />
                 </a-input>
               </a-form-item>
             </a-col>
@@ -63,7 +63,7 @@
                 :disabled="state.smsSendBtn"
                 @click.stop.prevent="getCaptcha"
                 v-text="!state.smsSendBtn && '获取验证码' || (state.time+' s')"
-              ></a-button>
+              />
             </a-col>
           </a-row>
         </a-tab-pane>
@@ -75,55 +75,47 @@
           :to="{ name: 'recover', params: { user: 'aaa'} }"
           class="forge-password"
           style="float: right;"
-        >忘记密码</router-link>
+        >
+          忘记密码
+        </router-link>
       </a-form-item>
 
       <a-form-item style="margin-top:24px">
         <a-button
           size="large"
           type="primary"
-          htmlType="submit"
+          html-type="submit"
           class="login-button"
           :loading="state.loginBtn"
-          :disabled="state.loginBtn"
-        >确定</a-button>
+        >
+          确定
+        </a-button>
       </a-form-item>
 
       <div class="user-login-other">
         <span>其他登录方式</span>
         <a>
-          <a-icon class="item-icon" type="alipay-circle"></a-icon>
+          <a-icon class="item-icon" type="alipay-circle" />
         </a>
         <a>
-          <a-icon class="item-icon" type="taobao-circle"></a-icon>
+          <a-icon class="item-icon" type="taobao-circle" />
         </a>
         <a>
-          <a-icon class="item-icon" type="weibo-circle"></a-icon>
+          <a-icon class="item-icon" type="weibo-circle" />
         </a>
         <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>
       </div>
     </a-form>
-
-    <two-step-captcha
-      v-if="requiredTwoStepCaptcha"
-      :visible="stepCaptchaVisible"
-      @success="stepCaptchaSuccess"
-      @cancel="stepCaptchaCancel"
-    ></two-step-captcha>
   </div>
 </template>
 
 <script>
-import md5 from 'md5'
-import TwoStepCaptcha from '@/components/tools/TwoStepCaptcha'
 import { mapActions } from 'vuex'
-import { timeFix } from '@/utils/util'
-import { getSmsCaptcha, get2step } from '@/api/login'
+import { getSmsCaptcha } from '@/api/user'
 
 export default {
-  components: {
-    TwoStepCaptcha
-  },
+  name: 'Login',
+  layout: 'login',
   data () {
     return {
       customActiveKey: 'tab1',
@@ -139,19 +131,9 @@ export default {
         loginBtn: false,
         // login type: 0 email, 1 username, 2 telephone
         loginType: 0,
-        smsSendBtn: false
-      }
+        smsSendBtn: false,
+      },
     }
-  },
-  created () {
-    get2step({ })
-      .then(res => {
-        this.requiredTwoStepCaptcha = res.result.stepCode
-      })
-      .catch(() => {
-        this.requiredTwoStepCaptcha = false
-      })
-    // this.requiredTwoStepCaptcha = true
   },
   methods: {
     ...mapActions(['Login', 'Logout']),
@@ -176,7 +158,7 @@ export default {
         form: { validateFields },
         state,
         customActiveKey,
-        Login
+        Login,
       } = this
 
       state.loginBtn = true
@@ -189,7 +171,7 @@ export default {
           const loginParams = { ...values }
           delete loginParams.username
           loginParams[!state.loginType ? 'email' : 'username'] = values.username
-          loginParams.password = md5(values.password)
+          loginParams.password = values.password // md5(values.password)
           Login(loginParams)
             .then((res) => this.loginSuccess(res))
             .catch(err => this.requestFailed(err))
@@ -222,10 +204,10 @@ export default {
           const hide = this.$message.loading('验证码发送中..', 0)
           getSmsCaptcha({ mobile: values.mobile }).then(res => {
             setTimeout(hide, 2500)
-            this.$notification['success']({
+            this.$notification.success({
               message: '提示',
               description: '验证码获取成功，您的验证码为：' + res.result.captcha,
-              duration: 8
+              duration: 8,
             })
           }).catch(err => {
             setTimeout(hide, 1)
@@ -264,20 +246,20 @@ export default {
       setTimeout(() => {
         this.$notification.success({
           message: '欢迎',
-          description: `${timeFix()}，欢迎回来`
+          description: '欢迎回来',
         })
       }, 1000)
       this.isLoginError = false
     },
     requestFailed (err) {
       this.isLoginError = true
-      this.$notification['error']({
+      this.$notification.error({
         message: '错误',
         description: ((err.response || {}).data || {}).message || '请求出现错误，请稍后再试',
-        duration: 4
+        duration: 4,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

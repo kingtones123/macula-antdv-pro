@@ -1,8 +1,8 @@
 <template>
-  <a-result status="404" title="404" sub-title="Sorry, the page you visited does not exist.">
+  <a-result status="404" title="404" :sub-title="$t('exception.404.subtitle')">
     <template #extra>
       <a-button type="primary" @click="toHome">
-        Back Home
+        {{ $t('exception.backhome') }}
       </a-button>
     </template>
   </a-result>
@@ -11,10 +11,11 @@
 <script>
 export default {
   name: 'Exception404',
+  layout: 'blank',
   methods: {
     toHome () {
       this.$router.push({ path: '/' })
-    }
-  }
+    },
+  },
 }
 </script>

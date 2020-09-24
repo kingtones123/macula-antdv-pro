@@ -7,9 +7,6 @@
  * fixedHeader - 固定 Header : boolean
  * fixSiderbar - 固定左侧菜单栏 ： boolean
  * contentWidth - 内容区布局： 流式 |  固定
- *
- * storageOptions: {} - Vue-ls 插件配置项 (localStorage/sessionStorage)
- *
  */
 
 export default {
@@ -21,10 +18,10 @@ export default {
   fixSiderbar: false, // sticky siderbar
   colorWeak: false,
   menu: {
-    locale: true
+    locale: true,
   },
   title: 'Ant Design Pro',
   pwa: false,
   iconfontUrl: '',
-  production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true'
+  production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
 }

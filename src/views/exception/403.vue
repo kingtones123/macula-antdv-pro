@@ -1,8 +1,8 @@
 <template>
-  <a-result status="403" title="403" sub-title="Sorry, you don't have access to this page.">
+  <a-result status="403" title="403" :sub-title="$t('exception.403.subtitle')">
     <template #extra>
       <a-button type="primary" @click="toHome">
-        Back Home
+        {{ $t('exception.backhome') }}
       </a-button>
     </template>
   </a-result>
@@ -14,7 +14,7 @@ export default {
   methods: {
     toHome () {
       this.$router.push({ path: '/' })
-    }
-  }
+    },
+  },
 }
 </script>

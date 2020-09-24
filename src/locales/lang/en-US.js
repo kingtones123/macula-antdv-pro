@@ -1,22 +1,60 @@
-import antdEnUS from 'ant-design-vue/es/locale-provider/en_US'
-import momentEU from 'moment/locale/eu'
+import exceptionLang from '@/views/exception/locales/enUS'
 
-const components = {
-  antLocale: antdEnUS,
-  momentName: 'eu',
-  momentLocale: momentEU
-}
+export default {
+  navBar: {
+    lang: 'Language',
+  },
+  layouts: {
+    usermenu: {
+      dialog: {
+        title: 'Log out',
+        content: 'Do you want log out',
+      },
+    },
+  },
+  menu: {
+    home: 'Home',
+    dashboard: {
+      default: 'Dashboard',
+      welcome: 'Welcome',
+      workplace: 'Workplace',
+    },
+    form: {
+      default: 'Form',
+      basicform: 'Basic Form',
+      stepform: 'Step Form',
+      advancedform: 'Advanced Form',
+    },
+    nav1: 'Nav 1',
+    nav2: 'Nav 2',
+    nav3: 'Nav 3',
+  },
 
-const locale = {
-  'message': '-',
-  'menu.home': 'Home',
-  'menu.dashboard': 'Dashboard',
-  'menu.dashboard.analysis': 'Analysis',
-  'menu.dashboard.monitor': 'Monitor',
-  'menu.dashboard.workplace': 'Workplace',
+  pages: {
+    dashboard: {
+      welcome: {
+        tips: 'Welcome used Ant Design Vue',
+        'show-loading': 'Show Loading',
+        'hide-loading': 'Hide Loading',
+      },
+    },
+    form: {
+      basicform: {
+        headers: {
+          btn1: 'Button1',
+          customTitle: 'Custom Page Title',
+        },
+        content: 'Form pages are used to collect or verify information to users, and basic forms are common in scenarios where there are fewer data items.',
+        tabs: {
+          tab1: 'Tab1',
+          tab2: 'Tab2',
+          tab3: 'Tab3',
+        },
+      },
+    },
+  },
 
-  'layouts.usermenu.dialog.title': 'Message',
-  'layouts.usermenu.dialog.content': 'Do you really log-out.',
+  'navBar.lang': 'Language',
 
   'app.setting.pagestyle': 'Page style setting',
   'app.setting.pagestyle.light': 'Light style',
@@ -36,10 +74,7 @@ const locale = {
   'app.setting.copy': 'Copy Setting',
   'app.setting.loading': 'Loading theme',
   'app.setting.copyinfo': 'copy success，please replace defaultSettings in src/models/setting.js',
-  'app.setting.production.hint': 'Setting panel shows in development environment only, please manually modify'
-}
+  'app.setting.production.hint': 'Setting panel shows in development environment only, please manually modify',
 
-export default {
-  ...components,
-  ...locale
+  ...exceptionLang,
 }
