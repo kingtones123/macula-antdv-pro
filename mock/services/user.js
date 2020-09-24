@@ -10,7 +10,7 @@ const nav = [
     'name': 'home',
     'path': '/', // 这个很重要，不写会导致菜单点一下就缩起来
     'meta': {
-      'title': 'menu.home',
+      'title': '首页',
     },
   },
   // dashboard
