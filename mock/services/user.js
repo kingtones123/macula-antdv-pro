@@ -84,7 +84,7 @@ const nav = [
 ]
 
 const user = {
-  name: 'Serati Ma',
+  name: 'Serati Maa',
   avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
   userid: '00000001',
   email: 'antdesign@alipay.com',

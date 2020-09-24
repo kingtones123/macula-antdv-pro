@@ -91,7 +91,7 @@
         >
           注册
         </a-button>
-        <router-link class="login" :to="{ name: 'login' }">使用已有账户登录</router-link>
+        <router-link class="login" :to="{ path: '/user/Login' }">使用已有账户登录</router-link>
       </a-form-item>
     </a-form>
   </div>
@@ -121,6 +121,7 @@ const levelColor = {
 }
 export default {
   name: 'Register',
+  layout: 'login',
   components: {
   },
   mixins: [deviceMixin],
@@ -214,7 +215,7 @@ export default {
       validateFields({ force: true }, (err, values) => {
         if (!err) {
           state.passwordLevelChecked = false
-          $router.push({ name: 'registerResult', params: { ...values } })
+          $router.push({ path: '/user/RegisterResult', params: { ...values } })
         }
       })
     },

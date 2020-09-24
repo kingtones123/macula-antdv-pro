@@ -103,7 +103,7 @@
         <a>
           <a-icon class="item-icon" type="weibo-circle" />
         </a>
-        <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>
+        <router-link class="register" :to="{ path: '/user/Register' }">注册账户</router-link>
       </div>
     </a-form>
   </div>
@@ -230,26 +230,25 @@ export default {
     },
     loginSuccess (res) {
       console.log(res)
-      // check res.homePage define, set $router.push name res.homePage
-      // Why not enter onComplete
-      /*
-      this.$router.push({ name: 'analysis' }, () => {
-        console.log('onComplete')
-        this.$notification.success({
-          message: '欢迎',
-          description: `${timeFix()}，欢迎回来`
+      if (res.code === 200) {
+        this.$router.push({ path: '/' })
+        // 延迟 1 秒显示欢迎信息
+        setTimeout(() => {
+          this.$notification.success({
+            message: '欢迎',
+            description: '欢迎回来',
+            duration: 1,
+          })
+        }, 100)
+        this.isLoginError = false
+      } else {
+        this.isLoginError = true
+        this.$notification.error({
+          message: '错误',
+          description: res.message || '请求出现错误，请稍后再试',
+          duration: 4,
         })
-      })
-      */
-      this.$router.push({ path: '/' })
-      // 延迟 1 秒显示欢迎信息
-      setTimeout(() => {
-        this.$notification.success({
-          message: '欢迎',
-          description: '欢迎回来',
-        })
-      }, 1000)
-      this.isLoginError = false
+      }
     },
     requestFailed (err) {
       this.isLoginError = true

@@ -8,7 +8,7 @@ import { notification } from 'ant-design-vue'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
-const allowList = ['/user/Login', 'user/Register', 'user/RegisterResult'] // no redirect whitelist
+const allowList = ['/user/Login', '/user/Register', '/user/RegisterResult'] // no redirect whitelist
 const loginRoutePath = '/user/Login'
 const defaultRoutePath = '/'
 

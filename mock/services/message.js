@@ -3,6 +3,6 @@ const util = require('../util')
 
 module.exports = {
   'POST /api/message/sms': (req, res) => {
-    return util.builder({ captcha: Mock.mock('@integer(10000, 99999)') })
+    res.send(util.builder({ captcha: Mock.mock('@integer(10000, 99999)') }))
   },
 }

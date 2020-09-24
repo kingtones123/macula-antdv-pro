@@ -41,7 +41,7 @@ const user = {
           const { token } = response.result
           storage.set(ACCESS_TOKEN, token)
           commit('SET_TOKEN', token)
-          resolve()
+          resolve(response)
         }).catch(error => {
           reject(error)
         })
