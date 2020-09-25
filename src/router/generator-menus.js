@@ -8,7 +8,7 @@ import * as userService from '@/api/user'
 export const generatorMenus = (rootId) => {
   return new Promise((resolve, reject) => {
     userService.getUserNav({}).then(res => {
-      console.log('userNav', res)
+      // console.log('userNav', res)
       const { result } = res
       const menuNav = []
       const childrenNav = []
@@ -19,7 +19,7 @@ export const generatorMenus = (rootId) => {
         ...rootMenu,
         children: childrenNav,
       })
-      console.log('menuNav', menuNav)
+      // console.log('menuNav', menuNav)
       resolve(menuNav)
     }).catch(err => {
       reject(err)
