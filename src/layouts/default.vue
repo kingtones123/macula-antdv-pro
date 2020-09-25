@@ -141,7 +141,7 @@ export default {
      * 同步和保存设置栏配置
      * */
     handleSettingChange ({ type, value }) {
-      console.log('type', type, value)
+      // console.log('type', type, value)
       switch (type) {
         case 'contentWidth':
           this.$store.commit(TOGGLE_CONTENT_WIDTH, value)

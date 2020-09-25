@@ -4,7 +4,7 @@
     :tab-active-key="tabActiveKey"
     :tab-change="(key) => {
       this.tabActiveKey = key
-      console.log('PageHeader::tabChange', key)
+      // console.log('PageHeader::tabChange', key)
     }"
     :breadcrumb="customBreadcrumb"
   >
@@ -68,7 +68,7 @@ export default {
   methods: {
     handleTabChange (key) {
       this.tabActiveKey = key
-      console.log('PageHeader::tabChange', key)
+      // console.log('PageHeader::tabChange', key)
     },
   },
 }
