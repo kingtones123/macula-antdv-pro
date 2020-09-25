@@ -23,8 +23,8 @@ router.beforeEach((to, from, next) => {
       // check login user is null
       if (store.getters.currentUser.name === undefined) {
         store.dispatch('GetUserInfo').then(res => {
-          // generate dynamic router
-          store.dispatch('GenerateMenus').then(() => {
+          // generate dynamic menus by rootId
+          store.dispatch('GenerateMenus', 0).then(() => {
             // 请求带有 redirect 重定向时，登录自动重定向到该地址
             const redirect = decodeURIComponent(from.query.redirect || from.meta.redirect || to.path)
             if (to.path === redirect) {

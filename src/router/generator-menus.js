@@ -5,7 +5,7 @@ import * as userService from '@/api/user'
  * @param token
  * @returns {Promise<Router>}
  */
-export const generatorMenus = () => {
+export const generatorMenus = (rootId) => {
   return new Promise((resolve, reject) => {
     userService.getUserNav({}).then(res => {
       console.log('userNav', res)
@@ -13,8 +13,8 @@ export const generatorMenus = () => {
       const menuNav = []
       const childrenNav = []
       // 后端数据, 根级树数组,  根级 PID
-      listToTree(result, childrenNav, 0)
-      const rootMenu = searchRoot(result, 0)
+      listToTree(result, childrenNav, rootId)
+      const rootMenu = searchRoot(result, rootId)
       menuNav.push({
         ...rootMenu,
         children: childrenNav,

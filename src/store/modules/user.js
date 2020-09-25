@@ -63,9 +63,9 @@ const user = {
       })
     },
 
-    GenerateMenus ({ commit }) {
+    GenerateMenus ({ commit }, rootId) {
       return new Promise(resolve => {
-        generatorMenus().then(menus => {
+        generatorMenus(rootId).then(menus => {
           commit('SET_MENUS', menus)
           resolve()
         })
