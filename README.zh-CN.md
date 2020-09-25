@@ -59,7 +59,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Macula-Antdv-Vue改动点
 - 引入了[vue-auto-routing](https://github.com/ktsn/vue-auto-routing)
 - 引入了[vue-router-layout](https://github.com/ktsn/vue-router-layout)
-具体生成的路由和layout使用可以参考上述网站
+- 注意子目录的vue文件一定要生成嵌套路由，怎么生成可以参考[vue-route-generator](https://github.com/ktsn/vue-route-generator)具体生成的路由和layout使用可以参考上述网站
+
 - 去掉了前端权限，由于路由是自动生成的，所以菜单和路由无关，权限由后端访问的接口控制，菜单数据需要注意name、path，例如：
 ```
   // home
