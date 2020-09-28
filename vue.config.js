@@ -154,8 +154,6 @@ const vueConfig = {
   /* ADVANCED SETTINGS */
   publicPath: process.env.VUE_APP_CONTEXT_PATH,
 
-  assetsDir: 'static',
-
   // disable source map in production
   productionSourceMap: !isProd,
   // ESLint Check: DISABLE for false
