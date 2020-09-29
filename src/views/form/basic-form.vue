@@ -130,6 +130,15 @@
 </route>
 
 <script>
+import Vue from 'vue'
+import { Card, DatePicker, InputNumber, Radio, Select } from 'ant-design-vue'
+
+Vue.use(Card)
+Vue.use(DatePicker)
+Vue.use(InputNumber)
+Vue.use(Radio)
+Vue.use(Select)
+
 export default {
   name: 'BaseForm',
   data () {

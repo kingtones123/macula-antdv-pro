@@ -32,6 +32,7 @@ const assetsCDN = {
     vuex: 'Vuex',
     'vue-router': 'VueRouter',
     axios: 'axios',
+    moment: 'moment',
   },
   assets: {
     css: [],
@@ -43,10 +44,11 @@ const assetsCDN = {
       // '//cdn.jsdelivr.net/npm/vuex@latest/dist/vuex.min.js',
       // '//cdn.jsdelivr.net/npm/axios@latest/dist/axios.min.js',
 
-      '//cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js',
+      '//cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js',
       '//cdn.bootcdn.net/ajax/libs/vue-router/3.4.3/vue-router.min.js',
       '//cdn.bootcdn.net/ajax/libs/vuex/3.5.1/vuex.min.js',
       '//cdn.bootcdn.net/ajax/libs/axios/0.20.0/axios.min.js',
+      '//cdn.bootcdn.net/ajax/libs/moment.js/2.29.0/moment.min.js',
     ],
   },
 }
