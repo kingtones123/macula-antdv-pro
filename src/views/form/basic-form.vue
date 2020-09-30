@@ -130,6 +130,15 @@
 </route>
 
 <script>
+import Vue from 'vue'
+import { Card, DatePicker, InputNumber, Radio, Select } from 'ant-design-vue'
+
+Vue.use(Card)
+Vue.use(DatePicker)
+Vue.use(InputNumber)
+Vue.use(Radio)
+Vue.use(Select)
+
 export default {
   name: 'BaseForm',
   data () {
@@ -143,7 +152,7 @@ export default {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log('Received values of form: ', values)
+          // console.log('Received values of form: ', values)
         }
       })
     },

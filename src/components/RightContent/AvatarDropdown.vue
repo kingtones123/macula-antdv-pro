@@ -59,7 +59,7 @@ export default {
           // }).catch(() => console.log('Oops errors!'))
           return this.$store.dispatch('Logout').then(() => {
             // this.$router.push({ path: '/user/Login' })
-            window.location = '/'
+            window.location = process.env.VUE_APP_CONTEXT_PATH
           })
         },
         onCancel () {},

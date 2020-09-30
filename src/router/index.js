@@ -24,6 +24,7 @@ const RouterLayout = createRouterLayout(layout => {
 
 export default new VueRouter({
   mode: 'history',
+  base: process.env.VUE_APP_CONTEXT_PATH,
   routes: [
     {
       path: '/',
